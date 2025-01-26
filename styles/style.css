@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 80vw;
+    margin: 20px auto;
+}
+
+.game-board {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 32px;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    gap: 128px;
+    margin: 32px;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 128px;
+}
+
+.player-submit-btn {
+    display: block;
+}
