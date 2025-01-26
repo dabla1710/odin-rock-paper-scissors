@@ -22,7 +22,6 @@ body {
     display: flex;
     justify-content: space-between;
     gap: 128px;
-    margin: 32px;
 }
 
 .choices {

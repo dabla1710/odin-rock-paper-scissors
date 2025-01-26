@@ -73,20 +73,36 @@ function playRound(playerChoice, computerChoice) {
     return playerIsWinner;
 }
 
+function playGame() {
+    let playerScore = 0;
+    let computerScore = 0;
 
+    for (let roundsPlayed = 0; roundsPlayed < 5; roundsPlayed++) {
+        console.log(`--> Round ${roundsPlayed+1} start! <--`);
 
+        const computerChoice = getComputerChoice();
+    
+        let playerChoice = undefined;
+        while (playerChoice == undefined) {
+            playerChoice = getPlayerChoice();
+        }
 
-let playerScore = 0;
-let computerScore = 0;
+        let isPlayerWinner = playRound(playerChoice, computerChoice);
+        if (isPlayerWinner) {
+            console.log(`You won! ${playerChoice} beats ${computerChoice}`);
+            playerScore++;
+        } else if (isPlayerWinner == false) {
+            console.log(`You lost! ${playerChoice} is beaten by ${computerChoice}`);
+            computerScore++;
+        } else {
+            console.log(`Draw! Player: ${playerChoice}, Computer: ${computerChoice}`);
+        }
+    }
 
-console.log("Rock Paper Scissors");
-const computerChoice = getComputerChoice();
-console.log(computerChoice);
-
-let playerChoice = undefined;
-
-while (playerChoice == undefined) {
-    playerChoice = getPlayerChoice();
+    console.log(`--- Final score ---\nYou: ${playerScore}\nAI: ${computerScore}`);
 }
 
-console.log(playerChoice);
+console.log("Welcome To Rock Paper Scissors!");
+
+playGame();
+
