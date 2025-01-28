@@ -12,6 +12,10 @@ body {
     margin: 20px auto;
 }
 
+#title {
+    margin-top: 32px;
+}
+
 .game-board {
     display: flex;
     flex-direction: column;
@@ -19,20 +23,41 @@ body {
     border: 2px solid black;
     border-radius: 5px;
     padding: 32px;
+    margin: 64px auto;
 }
 
 .scoreboard {
     display: flex;
     justify-content: space-between;
     gap: 128px;
+    padding: 16px;
+    border: 2px solid salmon;
 }
 
-.choices {
+.player-choices {
     display: flex;
     justify-content: space-evenly;
     gap: 128px;
+    padding: 16px;
+
+    border: 2px solid sandybrown;
 }
 
-.player-submit-btn {
+.rps-btn {
     display: block;
+}
+
+.round-results {
+    display: flex;
+    flex-direction: column;
+    min-height: 50vh;
+}
+
+.round {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 8px 16px;
+
+    text-align: center;
 }

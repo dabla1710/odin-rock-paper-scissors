@@ -12,97 +12,133 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice() {
-    const playerChoice = prompt("Enter 'rock', 'paper' or 'scissors':");
-    switch(playerChoice) {
-        case "rock":
-            return "rock";
-        case "paper":
-            return "paper";
-        case "scissors":
-            return "scissors";
-        default:
-            return undefined;
-    }
-}
-
-/* returns true if player won, false when computer won and undefined if even */
+// decides on the winner and updates scoreboard
 function playRound(playerChoice, computerChoice) {
-    const pChoiceClean = playerChoice.toLowerCase();
-    const cChoiceClean = computerChoice.toLowerCase();
+    console.log("playerChoice:", playerChoice, "|", "computerChoice", computerChoice);
 
-    let playerIsWinner = undefined;
+    let isPlayerWinner = undefined;
 
     /* check who is the winner */
-    switch (pChoiceClean) {
+    switch (playerChoice) {
         case "rock":
-            switch(cChoiceClean) {
+            switch(computerChoice) {
                 case "paper":
-                    playerIsWinner = false;
+                    isPlayerWinner = false;
                     break;
                 case "scissors":
-                    playerIsWinner = true;
+                    isPlayerWinner = true;
                     break;
             }
             break;
         
         case "paper":
-            switch(cChoiceClean) {
+            switch(computerChoice) {
                 case "rock":
-                    playerIsWinner = true;
+                    isPlayerWinner = true;
                     break;
                 case "scissors":
-                    playerIsWinner = false;
+                    isPlayerWinner = false;
                     break;
             }
             break;
 
         case "scissors":
-            switch(cChoiceClean) {
+            switch(computerChoice) {
                 case "rock":
-                    playerIsWinner = false;
+                    isPlayerWinner = false;
                     break;
                 case "paper":
-                    playerIsWinner = true;
+                    isPlayerWinner = true;
                     break;
             }
             break;
     }
 
+    logRound(playerChoice, computerChoice, isPlayerWinner);
 
-    return playerIsWinner;
+    if (isPlayerWinner != undefined){
+        updateScoreboard(isPlayerWinner);
+    } else {
+        console.log("Draw!");
+    }
+    
 }
 
-function playGame() {
-    let playerScore = 0;
-    let computerScore = 0;
+function updateScoreboard(isPlayerWinner) {
+    console.log("isPlayerWinner:", isPlayerWinner);
+    if (isPlayerWinner) {
+        const pScore = document.querySelector("#p-score");
 
-    for (let roundsPlayed = 0; roundsPlayed < 5; roundsPlayed++) {
-        console.log(`--> Round ${roundsPlayed+1} start! <--`);
-
-        const computerChoice = getComputerChoice();
-    
-        let playerChoice = undefined;
-        while (playerChoice == undefined) {
-            playerChoice = getPlayerChoice();
-        }
-
-        let isPlayerWinner = playRound(playerChoice, computerChoice);
-        if (isPlayerWinner) {
-            console.log(`You won! ${playerChoice} beats ${computerChoice}`);
-            playerScore++;
-        } else if (isPlayerWinner == false) {
-            console.log(`You lost! ${playerChoice} is beaten by ${computerChoice}`);
-            computerScore++;
-        } else {
-            console.log(`Draw! Player: ${playerChoice}, Computer: ${computerChoice}`);
-        }
+        let pScoreNum = Number(pScore.textContent);
+        console.log("pScore before:", pScoreNum);
+        pScoreNum++;
+        console.log("pScore after:", pScoreNum);
+        pScore.textContent = pScoreNum;
+    } else if (!isPlayerWinner) {
+        const cScore = document.querySelector("#c-score");
+        let cScoreNum = Number(cScore.textContent);
+        cScoreNum++;
+        cScore.textContent = cScoreNum;
+    } else {
+        alert("Draw!");
     }
+}
 
-    console.log(`--- Final score ---\nYou: ${playerScore}\nAI: ${computerScore}`);
+function logRound(playerChoice, computerChoice, isPlayerWinner) {
+    const roundResults = document.querySelector(".round-results");
+
+    const newRoundDiv = document.createElement("div");
+    newRoundDiv.classList.add("round");
+    roundResults.appendChild(newRoundDiv);
+
+    const playerDiv = document.createElement("div");
+    playerDiv.textContent = playerChoice;
+    playerDiv.style.backgroundColor = "green";
+    newRoundDiv.appendChild(playerDiv);
+
+    const winnerDiv = document.createElement("div");
+    if (isPlayerWinner) {
+        winnerDiv.textContent = "You won !";
+    } else if (isPlayerWinner == false) {
+        winnerDiv.textContent = "You lost !";
+    } else {
+        winnerDiv.textContent = "DRAW !";
+    }
+    winnerDiv.style.textAlign = "start";
+    newRoundDiv.appendChild(winnerDiv);
+
+    const computerDiv = document.createElement("div");
+    computerDiv.textContent = computerChoice;
+    computerDiv.style.backgroundColor = "red";
+    newRoundDiv.appendChild(computerDiv);
 }
 
 console.log("Welcome To Rock Paper Scissors!");
 
-playGame();
+// Play Buttons
+const rockBtn = document.querySelector("#rock-btn");
+const paperBtn = document.querySelector("#paper-btn");
+const scissorsBtn = document.querySelector("#scissors-btn");
+
+rockBtn.addEventListener(
+    "click", () => playRound("rock", getComputerChoice())
+);
+
+paperBtn.addEventListener(
+    "click", () => playRound("paper", getComputerChoice())
+);
+
+scissorsBtn.addEventListener(
+    "click", () => playRound("scissors", getComputerChoice())
+);
+
+// Scoreboard
+let playerScore = 0;
+let computerScore = 0;
+
+const pScore = document.querySelector("#p-score");
+const cScore = document.querySelector("#c-score");
+pScore.textContent = playerScore;
+cScore.textContent = computerScore;
+
 
