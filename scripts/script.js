@@ -16,7 +16,7 @@ function getComputerChoice() {
 function playRound(playerChoice, computerChoice) {
     let isPlayerWinner = undefined;
 
-    /* check who is the winner */
+    /* check who is winner */
     switch (playerChoice) {
         case "rock":
             switch(computerChoice) {
@@ -107,10 +107,21 @@ function logRound(playerChoice, computerChoice, isPlayerWinner) {
     newRoundDiv.appendChild(computerDiv);
 }
 
+function resetScoreboard() {
+    const pScore = document.querySelector("#p-score");
+    pScore.textContent = 0;
+    const cScore = document.querySelector("#c-score");
+    cScore.textContent = 0;
+
+    const roundResults = document.querySelector(".round-results");
+    roundResults.innerHTML="";
+}
+
 // Play Buttons
 const rockBtn = document.querySelector("#rock-btn");
 const paperBtn = document.querySelector("#paper-btn");
 const scissorsBtn = document.querySelector("#scissors-btn");
+const resetBtn = document.querySelector("#reset-btn");
 
 rockBtn.addEventListener(
     "click", () => playRound("rock", getComputerChoice())
@@ -122,6 +133,10 @@ paperBtn.addEventListener(
 
 scissorsBtn.addEventListener(
     "click", () => playRound("scissors", getComputerChoice())
+);
+
+resetBtn.addEventListener(
+    "click", () => resetScoreboard()
 );
 
 // Scoreboard
