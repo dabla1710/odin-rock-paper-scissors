@@ -14,8 +14,6 @@ function getComputerChoice() {
 
 // decides on the winner and updates scoreboard
 function playRound(playerChoice, computerChoice) {
-    console.log("playerChoice:", playerChoice, "|", "computerChoice", computerChoice);
-
     let isPlayerWinner = undefined;
 
     /* check who is the winner */
@@ -58,29 +56,20 @@ function playRound(playerChoice, computerChoice) {
 
     if (isPlayerWinner != undefined){
         updateScoreboard(isPlayerWinner);
-    } else {
-        console.log("Draw!");
-    }
-    
+    }    
 }
 
 function updateScoreboard(isPlayerWinner) {
-    console.log("isPlayerWinner:", isPlayerWinner);
     if (isPlayerWinner) {
         const pScore = document.querySelector("#p-score");
-
         let pScoreNum = Number(pScore.textContent);
-        console.log("pScore before:", pScoreNum);
         pScoreNum++;
-        console.log("pScore after:", pScoreNum);
         pScore.textContent = pScoreNum;
     } else if (!isPlayerWinner) {
         const cScore = document.querySelector("#c-score");
         let cScoreNum = Number(cScore.textContent);
         cScoreNum++;
         cScore.textContent = cScoreNum;
-    } else {
-        alert("Draw!");
     }
 }
 
@@ -117,8 +106,6 @@ function logRound(playerChoice, computerChoice, isPlayerWinner) {
     computerDiv.textContent = computerChoice;
     newRoundDiv.appendChild(computerDiv);
 }
-
-console.log("Welcome To Rock Paper Scissors!");
 
 // Play Buttons
 const rockBtn = document.querySelector("#rock-btn");
