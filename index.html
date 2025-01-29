@@ -5,40 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>
+    <h1 id="title">< Rock 🪨 - Paper 📄 - Scissors ✂️ ></Rock></h1>
 
-    <h2>This game board is for later</h2>
-    <h2>play with the console for now</h2>
-    
-    <div class="game-board">
+    <div class="game-board-container">
+        <div class="game-board">
 
-        <div class="scoreboard">
-            <p>Player Score: </p>
-            <p>Computer Score: </p>
-        </div>
-    
-        <div class="choices">
-            <div class="player-choice">
-                <p>Player:</p>
-                <div class="player-choice-placeholder">P Placeholder</div>
+            <div class="scoreboard">
+                <p>Player Score: <span id="p-score"></span></p>
+                <p>Computer Score: <span id="c-score"></span></p>
             </div>
-        
-            <div class="computer-choice">
-                <p>Computer:</p>
-                <div class="computer-choice-placeholder">C Placeholder</div>
-            </div>
-        </div>
-        
-        <button class="player-submit-btn" type="submit">Play</button>
 
+            <div class="divider"></div>
+                
+            <div class="player-choices">
+                <button class="rps-btn" id="rock-btn">Rock</button>
+                <button class="rps-btn" id="paper-btn">Paper</button>
+                <button class="rps-btn" id="scissors-btn">Scissors</button>
+            </div>
+
+            <div class="divider"></div>
+    
+            <div class="round-results"></div>
+            <div class="divider"></div>    
+            <button id="reset-btn">Reset</button>
+        </div>
     </div>
-
-
-
-
-    
 </body>
 <script src="scripts/script.js"></script>
 </html>
