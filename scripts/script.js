@@ -92,24 +92,29 @@ function logRound(playerChoice, computerChoice, isPlayerWinner) {
     roundResults.appendChild(newRoundDiv);
 
     const playerDiv = document.createElement("div");
+    playerDiv.classList.add("round-element");
     playerDiv.textContent = playerChoice;
-    playerDiv.style.backgroundColor = "green";
     newRoundDiv.appendChild(playerDiv);
 
     const winnerDiv = document.createElement("div");
+    winnerDiv.classList.add("round-element");
+
     if (isPlayerWinner) {
         winnerDiv.textContent = "You won !";
+        winnerDiv.style.backgroundImage = "linear-gradient(to left, white 85%, lightgreen 100%)";
     } else if (isPlayerWinner == false) {
         winnerDiv.textContent = "You lost !";
+        winnerDiv.style.backgroundImage = "linear-gradient(to right, white 85%, indianred 100%)";
     } else {
         winnerDiv.textContent = "DRAW !";
+        winnerDiv.style.backgroundImage = "linear-gradient(to right, goldenrod 0%, white 15%, white 85%, goldenrod 100%)";
     }
-    winnerDiv.style.textAlign = "start";
+
     newRoundDiv.appendChild(winnerDiv);
 
     const computerDiv = document.createElement("div");
+    computerDiv.classList.add("round-element");
     computerDiv.textContent = computerChoice;
-    computerDiv.style.backgroundColor = "red";
     newRoundDiv.appendChild(computerDiv);
 }
 

@@ -7,23 +7,38 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     width: 80vw;
     margin: 20px auto;
+    font-family: 'Roboto', sans-serif;
 }
 
 #title {
     margin-top: 32px;
 }
 
+.game-board-container {
+    display: flex;
+    border: 1px solid purple;
+    border-radius: 32px;
+    margin: 64px auto;
+    padding: 32px;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom right, black, indigo, navy, midnightblue, black);
+}
+
 .game-board {
     display: flex;
     flex-direction: column;
-    
-    border: 2px solid black;
-    border-radius: 5px;
+    border: 1px solid black;
+    border-radius:16px;
     padding: 32px;
-    margin: 64px auto;
+    background-color: white;
+}
+
+.divider {
+    height: 2px;
+    background-image: linear-gradient(to bottom right, black, indigo, navy, midnightblue, black);
 }
 
 .scoreboard {
@@ -31,20 +46,38 @@ body {
     justify-content: space-between;
     gap: 128px;
     padding: 16px;
-    border: 2px solid salmon;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .player-choices {
     display: flex;
-    justify-content: space-evenly;
-    gap: 128px;
-    padding: 16px;
-
-    border: 2px solid sandybrown;
+    justify-content: space-around;
+    gap: 128px; /* remove later and adjust gameboard width */
+    padding: 16px 32px;
 }
 
 .rps-btn {
     display: block;
+    width: 96px;
+    background-color: white;
+    color: darkslategrey;
+    border-color: navy;
+    border-radius: 4px;
+    font-size: 16px;
+
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+}
+
+.rps-btn:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+.rps-btn:active{
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
 }
 
 .round-results {
@@ -58,6 +91,11 @@ body {
     flex-direction: row;
     justify-content: space-between;
     margin: 8px 16px;
+}
 
+.round-element {
+    width: 96px;
+    padding: 4px;
+    border-radius: 16px;
     text-align: center;
 }
